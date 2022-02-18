@@ -1,0 +1,15 @@
+.home {
+  z-index: 1;
+  background-color: transparent;
+}
+
+.menuIcon {
+  color: white;
+  opacity: 0.8;
+
+  &:hover {
+    color: red;
+    transition: 0.4s;
+    opacity: 1;
+  }
+}
