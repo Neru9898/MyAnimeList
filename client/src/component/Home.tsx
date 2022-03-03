@@ -51,14 +51,18 @@ const Home = () => {
             </IconButton>
             {/* <CloseIcon></CloseIcon> */}
           </Toolbar>
-          <List>time</List>
-          <List>time</List>
-          <List>time</List>
-          <List>time</List>
-          <List>time</List>
-          <List>time</List>
-          <List>time</List>
-          <List>time</List>
+          <Typography variant="h6" component="div" className="text">
+            All Anime
+          </Typography>
+          <Typography variant="h6" component="div" className="text">
+            Seasonal Anime
+          </Typography>
+          <Typography variant="h6" component="div" className="text">
+            Anime Movies
+          </Typography>
+          <Typography variant="h6" component="div" className="text">
+            Random Anime
+          </Typography>
         </Box>
       </Drawer>
     </div>

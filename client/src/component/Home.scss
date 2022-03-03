@@ -1,6 +1,12 @@
 .text {
   // z-index: 1;
   color: rgba(255, 251, 242);
+  padding: 1rem;
+  &:hover {
+    color: rgba(193, 2, 6);
+    transition: 0.4s;
+    opacity: 1;
+  }
 }
 
 .navBar {
