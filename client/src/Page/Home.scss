@@ -8,7 +8,28 @@
     opacity: 1;
   }
 }
+@mixin textFormat($cursorFormat) {
+  color: rgba(255, 251, 242);
+  padding: 1rem;
+  user-select: none;
+  &:hover {
+    color: rgba(193, 2, 6);
+    transition: 0.4s;
+    opacity: 1;
+    cursor: $cursorFormat;
+  }
+}
 
+.closeBtn {
+  &:hover {
+    color: rgba(193, 2, 6);
+    transition: 0.4s;
+    opacity: 1;
+  }
+}
+.menuText {
+  @include textFormat(pointer);
+}
 .navBar {
   background: transparent !important;
   box-shadow: none !important;
