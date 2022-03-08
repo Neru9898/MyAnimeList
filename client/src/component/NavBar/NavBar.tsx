@@ -1,7 +1,7 @@
 import React from "react";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
-import { AppBar, Drawer, Toolbar, Typography } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { AppBar, Toolbar, Typography } from "@mui/material";
+import { useDispatch } from "react-redux";
 import IconButton from "@mui/material/IconButton";
 import { leftMenuOpen } from "../../redux/action";
 const NavBar = () => {
