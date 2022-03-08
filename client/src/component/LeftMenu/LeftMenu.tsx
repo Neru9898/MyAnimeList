@@ -9,7 +9,11 @@ const LeftMenu = () => {
   const isOpen = useSelector((state: RootState) => state.leftMenu);
   const dispatch = useDispatch();
   return (
-    <Drawer anchor="left" open={isOpen}>
+    <Drawer
+      anchor="left"
+      open={isOpen}
+      onClose={() => dispatch(leftMenuOpen())}
+    >
       <Box className="menuContainer">
         <Toolbar className="menuHeader">
           <Typography variant="h5" component="div" className="menuText">
