@@ -10,6 +10,17 @@
   }
 }
 
+@mixin iconFormat {
+  color: rgba(255, 251, 242);
+  opacity: 0.8;
+
+  &:hover {
+    color: rgba(193, 2, 6);
+    transition: 0.4s;
+    opacity: 1;
+  }
+}
+
 .closeBtn {
   &:hover {
     color: rgba(193, 2, 6);
@@ -23,6 +34,22 @@
 .menuText {
   @include textFormat(pointer);
 }
+.bodyText {
+  border: 1px solid white;
+  font-size: 1px;
+  margin: 8rem 15rem 0rem 20rem;
+  height: fit-content;
+}
+.bodyImage {
+  max-width: 100%;
+  height: 42rem;
+  border-radius: 5%;
+  opacity: 0.6;
+}
+.bodyTextFormat {
+  color: rgba(255, 251, 242);
+  padding: 1rem;
+}
 .navBar {
   background: transparent !important;
   box-shadow: none !important;
@@ -30,16 +57,19 @@
   // border: 1px solid black;
 }
 .menuIcon {
-  color: rgba(255, 251, 242);
-  opacity: 0.8;
-
-  &:hover {
-    color: rgba(193, 2, 6);
-    transition: 0.4s;
-    opacity: 1;
-  }
+  @include iconFormat;
 }
 
+.arrowLeftIcon {
+  @include iconFormat;
+  align-self: center;
+}
+.arrowRightIcon {
+  @include iconFormat;
+
+  align-self: center;
+  // justify-self: end;
+}
 .menuContainer {
   width: 15vw;
   height: 100%;
@@ -49,4 +79,12 @@
   .menuHeader {
     justify-content: space-between;
   }
+}
+
+.topBody {
+  border: white 1px solid;
+  display: flex;
+  // justify-content: end;
+  padding-right: 5rem;
+  padding-top: 5rem;
 }
