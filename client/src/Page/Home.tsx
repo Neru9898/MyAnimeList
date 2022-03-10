@@ -4,6 +4,7 @@ import NavBar from "../component/NavBar/NavBar";
 import LeftMenu from "../component/LeftMenu/LeftMenu";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Carousel from "react-material-ui-carousel";
 import { Box, IconButton, Typography } from "@mui/material";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
@@ -38,7 +39,7 @@ const Home = () => {
     <div className="home">
       <NavBar />
       <LeftMenu />
-
+      {/* 
       {loading && (
         <div className="topBody">
           <ArrowBackIosOutlinedIcon
@@ -69,8 +70,23 @@ const Home = () => {
             }}
             className="arrowRightIcon"
           />
-        </div>
-      )}
+
+          <Carousel>
+            {topAnime.map((anime: any) => {
+              console.log(anime.images.jpg.large_image_url);
+            })}
+          </Carousel>
+        </div> 
+       )} */}
+
+      {/* {loading && (
+        <Carousel>
+          <img
+            src={topAnime[currImage].images.jpg.large_image_url}
+            className="bodyImage"
+          />
+        </Carousel>
+      )} */}
     </div>
   );
 };
