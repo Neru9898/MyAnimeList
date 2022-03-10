@@ -20,6 +20,20 @@ const Home = () => {
       setLoading(true);
     });
   }, []);
+  const directionOfCarousel = (dir: string) => {
+    if (dir === "Right") {
+      setCurrImage(currImage >= topAnime.length - 1 ? 0 : currImage + 1);
+      console.log(currImage);
+    } else {
+      console.log(currImage, topAnime.length - 1);
+      setCurrImage(currImage <= 0 ? 24 : currImage - 1);
+    }
+
+    // console.log(topAnime.length);
+  };
+
+  // setInterval(() => directionOfCarousel("Right"), 10000);
+
   return (
     <div className="home">
       <NavBar />
@@ -28,10 +42,13 @@ const Home = () => {
       {loading && (
         <div className="topBody">
           <ArrowBackIosOutlinedIcon
-            onClick={() => setCurrImage(currImage - 1)}
+            fontSize="large"
+            onClick={() => {
+              // setCurrImage(currImage - 1);
+              directionOfCarousel("Left");
+            }}
             className="arrowLeftIcon"
           />
-
           <Box className="bodyText">
             <Typography variant="h5" className="bodyTextFormat">
               {topAnime[currImage].title_english}
@@ -45,8 +62,11 @@ const Home = () => {
             className="bodyImage"
           />
           <ArrowForwardIosOutlinedIcon
-            // fontSize="large"
-            onClick={() => setCurrImage(currImage + 1)}
+            fontSize="large"
+            onClick={() => {
+              // setCurrImage(currImage + 1);
+              directionOfCarousel("Right");
+            }}
             className="arrowRightIcon"
           />
         </div>
