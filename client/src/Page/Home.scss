@@ -20,7 +20,11 @@
     opacity: 1;
   }
 }
-
+.test {
+  height: 50vh;
+  width: 50vw;
+  border: 1px solid black;
+}
 .closeBtn {
   &:hover {
     color: rgba(193, 2, 6);

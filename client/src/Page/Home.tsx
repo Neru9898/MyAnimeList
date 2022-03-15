@@ -4,7 +4,7 @@ import NavBar from "../component/NavBar/NavBar";
 import LeftMenu from "../component/LeftMenu/LeftMenu";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Carousel from "react-material-ui-carousel";
+
 import { Box, IconButton, Typography } from "@mui/material";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
@@ -34,11 +34,20 @@ const Home = () => {
   };
 
   // setInterval(() => directionOfCarousel("Right"), 10000);
-
+  var items = [
+    {
+      name: "Random Name #1",
+      description: "Probably the most random thing you have ever seen!",
+    },
+    {
+      name: "Random Name #2",
+      description: "Hello World!",
+    },
+  ];
   return (
     <div className="home">
-      <NavBar />
-      <LeftMenu />
+      {/* <NavBar /> */}
+      {/* <LeftMenu /> */}
       {/* 
       {loading && (
         <div className="topBody">
@@ -78,15 +87,6 @@ const Home = () => {
           </Carousel>
         </div> 
        )} */}
-
-      {/* {loading && (
-        <Carousel>
-          <img
-            src={topAnime[currImage].images.jpg.large_image_url}
-            className="bodyImage"
-          />
-        </Carousel>
-      )} */}
     </div>
   );
 };
