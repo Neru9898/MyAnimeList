@@ -9,7 +9,28 @@ import { Box, IconButton, Typography } from "@mui/material";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import Temp from "./Temp";
+import "react-multi-carousel/lib/styles.css";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import "./Home.scss";
 
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    slidesToSlide: 3, // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2, // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1, // optional, default to 1.
+  },
+};
 const Home = () => {
   const [topAnime, setTopAnime] = useState<any>();
   const [loading, setLoading] = useState<boolean>(false);
@@ -36,9 +57,9 @@ const Home = () => {
 
   return (
     <div className="home">
-      {/* <NavBar /> */}
-      {/* <LeftMenu /> */}
-      {/* 
+      <NavBar />
+      <LeftMenu />
+
       {loading && (
         <div className="topBody">
           <ArrowBackIosOutlinedIcon
@@ -69,15 +90,35 @@ const Home = () => {
             }}
             className="arrowRightIcon"
           />
+        </div>
+      )}
+      {/* <Temp /> */}
+      {loading && (
+        <Carousel
+          swipeable={false}
+          draggable={false}
+          showDots={true}
+          responsive={responsive}
+          ssr={true} // means to render carousel on server-side.
+          infinite={true}
+          // autoPlay={this.props.deviceType !== "mobile" ? true : false}
+          autoPlaySpeed={3000}
+          keyBoardControl={true}
+          customTransition="all .5"
+          transitionDuration={500}
+          containerClass="test"
+          removeArrowOnDeviceType={["tablet", "mobile"]}
+          // deviceType={this.props.deviceType}
+          dotListClass="custom-dot-list-style"
+          itemClass="carousel-item-padding-6-px"
+        >
+          <div></div>
 
-          <Carousel>
-            {topAnime.map((anime: any) => {
-              console.log(anime.images.jpg.large_image_url);
-            })}
-          </Carousel>
-        </div> 
-       )} */}
-      <Temp />
+          {topAnime.map((image: any) => {
+            return <img src={image.images.jpg.large_image_url} />;
+          })}
+        </Carousel>
+      )}
     </div>
   );
 };
