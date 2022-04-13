@@ -110,12 +110,17 @@ const Home = () => {
           removeArrowOnDeviceType={["tablet", "mobile"]}
           // deviceType={this.props.deviceType}
           dotListClass="custom-dot-list-style"
-          itemClass="carousel-item-padding-6-px"
+          itemClass="imgtest"
         >
-          <div></div>
+          {/* <div></div> */}
 
           {topAnime.map((image: any) => {
-            return <img src={image.images.jpg.large_image_url} />;
+            return (
+              <img
+                src={image.images.jpg.large_image_url}
+                className="bodyImagetemp"
+              />
+            );
           })}
         </Carousel>
       )}
