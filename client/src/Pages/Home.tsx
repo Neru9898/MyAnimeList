@@ -8,9 +8,10 @@ const Home = () => {
   const [animeList, setAnimeList] = useState([]);
   const [mangaList, setMangaList] = useState([]);
   const [charactersList, setCharactersList] = useState([]);
+  const [peopleList, setPeopleList] = useState([]);
   useEffect(() => {
     axios.get("https://api.jikan.moe/v4/top/anime").then((res: any) => {
-      // console.log(res.data);
+      console.log(res.data);
       setAnimeList(res.data.data);
     });
   }, []);
@@ -19,12 +20,19 @@ const Home = () => {
       // console.log(res.data);
       setMangaList(res.data.data);
     });
+  }, []);
+  useEffect(() => {
     axios.get("https://api.jikan.moe/v4/top/characters").then((res: any) => {
       // console.log(res.data);
       setCharactersList(res.data.data);
     });
   }, []);
-  // useEffect(() => {}, []);
+  useEffect(() => {
+    axios.get("https://api.jikan.moe/v4/top/people").then((res: any) => {
+      // console.log(res.data);
+      setPeopleList(res.data.data);
+    });
+  }, []);
 
   return (
     <Grid container className="home-container">
@@ -32,12 +40,14 @@ const Home = () => {
       <Carousel
         autoPlay
         centerMode
-        centerSlidePercentage={25}
+        interval={4000}
+        centerSlidePercentage={20}
         infiniteLoop
         showIndicators={false}
         showThumbs={false}
         showStatus={false}
         className="carousel-container"
+        onChange={(e) => console.log(e)}
       >
         {animeList.map((anime: any) => {
           return (
@@ -46,6 +56,7 @@ const Home = () => {
                 className="carousel-image"
                 src={anime.images.jpg.large_image_url}
               />
+              <p className="legend">{anime.title_english}</p>
             </div>
           );
         })}
@@ -54,10 +65,11 @@ const Home = () => {
       <Carousel
         autoPlay
         centerMode
-        centerSlidePercentage={25}
+        centerSlidePercentage={20}
         infiniteLoop
         showIndicators={false}
         showThumbs={false}
+        interval={4000}
         showStatus={false}
         className="carousel-container"
       >
@@ -76,20 +88,45 @@ const Home = () => {
       <Carousel
         autoPlay
         centerMode
-        centerSlidePercentage={25}
+        centerSlidePercentage={20}
         infiniteLoop
         showIndicators={false}
         showThumbs={false}
+        interval={4000}
         showStatus={false}
         className="carousel-container"
       >
         {charactersList.map((character: any) => {
-          console.log(character.images.jpg.image_url);
+          // console.log(character.images.jpg.image_url);
           return (
             <div key={character.mal_id}>
               <img
                 className="carousel-image"
                 src={character.images.jpg.image_url}
+              />
+            </div>
+          );
+        })}
+      </Carousel>
+      Top People
+      <Carousel
+        autoPlay
+        centerMode
+        centerSlidePercentage={20}
+        infiniteLoop
+        showIndicators={false}
+        showThumbs={false}
+        interval={4000}
+        showStatus={false}
+        className="carousel-container"
+      >
+        {peopleList.map((people: any) => {
+          // console.log(people.images.jpg.image_url);
+          return (
+            <div key={people.mal_id}>
+              <img
+                className="carousel-image"
+                src={people.images.jpg.image_url}
               />
             </div>
           );
