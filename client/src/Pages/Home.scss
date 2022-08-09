@@ -1,4 +1,21 @@
 .home-container {
-  border: 1px solid white;
   height: calc(100% - 5rem);
+  width: 100%;
+  overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    /* Firefox */
+  }
+}
+
+.carousel-container {
+  height: fit-content;
+
+  .carousel-image {
+    height: 350px;
+    // width: 300px;
+  }
 }
