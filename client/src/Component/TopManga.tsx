@@ -9,19 +9,21 @@ const TopManga = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<any>();
   useEffect(() => {
-    axios
-      .get("https://api.jikan.moe/v4/top/manga")
-      .then((res: any) => {
-        setMangaList(res.data.data);
-        setError("");
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-      });
+    setTimeout(() => {
+      axios
+        .get("https://api.jikan.moe/v4/top/manga?page=1&limit=60")
+        .then((res: any) => {
+          setMangaList(res.data.data);
+          setError("");
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError(err);
+          setLoading(false);
+        });
+    }, 1000);
   }, []);
-  if (error) return <>RIP</>;
+  // if (error) return <>RIP</>;
   return (
     <>
       <Typography variant="h1" className="title-font">
@@ -40,7 +42,7 @@ const TopManga = () => {
           showThumbs={false}
           showStatus={false}
           className="carousel-container"
-          onChange={(e) => console.log(e)}
+          // onChange={(e) => console.log(e)}
         >
           {mangaList.map((manga: any) => {
             return (

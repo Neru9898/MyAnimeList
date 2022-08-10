@@ -9,19 +9,22 @@ const TopPeople = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<any>();
   useEffect(() => {
-    axios
-      .get("https://api.jikan.moe/v4/top/people")
-      .then((res: any) => {
-        setPeopleList(res.data.data);
-        setError("");
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-      });
+    setTimeout(() => {
+      axios
+        .get("https://api.jikan.moe/v4/top/people?page=1&limit=60")
+        .then((res: any) => {
+          setPeopleList(res.data.data);
+          setError("");
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError(err);
+          setLoading(false);
+        });
+    }, 1000);
   }, []);
-  if (error) return <>RIP</>;
+  // if (error) return <>RIP</>;
+
   return (
     <>
       <Typography variant="h1" className="title-font">
@@ -40,16 +43,16 @@ const TopPeople = () => {
           showThumbs={false}
           showStatus={false}
           className="carousel-container"
-          onChange={(e) => console.log(e)}
+          // onChange={(e) => console.log(e)}
         >
           {peopleList.map((people: any) => {
             return (
               <div className="temp" key={people.mal_id}>
                 <img
                   className="carousel-image"
-                  src={people.images.jpg.large_image_url}
+                  src={people.images.jpg.image_url}
                 />
-                <p className="legend">{people.title_english}</p>
+                {/* <p className="legend">{people}</p> */}
               </div>
             );
           })}

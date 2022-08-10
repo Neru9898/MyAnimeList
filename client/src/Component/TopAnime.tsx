@@ -1,29 +1,44 @@
 import { useEffect, useState } from "react";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Carousel } from "react-responsive-carousel";
 import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import "./Carousel.scss";
+
 const TopAnime = () => {
-  const [animeList, setAnimeList] = useState([]);
+  const [animeList, setAnimeList] = useState<any>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<any>();
+
   useEffect(() => {
-    axios
-      .get("https://api.jikan.moe/v4/top/anime")
-      .then((res: any) => {
-        setAnimeList(res.data.data);
-        setError("");
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-      });
+    const delay = (ms: number) => {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    };
+    setTimeout(() => {
+      axios
+        .get("https://api.jikan.moe/v4/top/anime?page=1&limit=60")
+        .then((res: any) => {
+          // console.log(res);
+          setAnimeList(res.data.data);
+          setError("");
+          setLoading(false);
+        })
+        .catch((err) => {
+          // console.log(err);
+
+          setError(err);
+          setLoading(false);
+        });
+    }, 1000);
   }, []);
-  if (error) return <>RIP</>;
+  // if (error) {
+  //   // setTimeout(() => , 1000);
+  //   // console.log("asdfasdf", error);
+  //   // setAnimeList([]);
+  //   return <>RIP</>;
+  // }
   return (
-    <>
+    <Box>
       <Typography variant="h1" className="title-font">
         Top Anime
       </Typography>
@@ -40,7 +55,7 @@ const TopAnime = () => {
           showThumbs={false}
           showStatus={false}
           className="carousel-container"
-          onChange={(e) => console.log(e)}
+          // onChange={(e) => console.log(e)}
         >
           {animeList.map((anime: any) => {
             return (
@@ -55,7 +70,7 @@ const TopAnime = () => {
           })}
         </Carousel>
       )}
-    </>
+    </Box>
   );
 };
 

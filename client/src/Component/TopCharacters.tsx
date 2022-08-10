@@ -9,19 +9,21 @@ const TopCharacters = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<any>();
   useEffect(() => {
-    axios
-      .get("https://api.jikan.moe/v4/top/characters")
-      .then((res: any) => {
-        setCharactersList(res.data.data);
-        setError("");
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-      });
+    setTimeout(() => {
+      axios
+        .get("https://api.jikan.moe/v4/top/characters?page=1&limit=60")
+        .then((res: any) => {
+          setCharactersList(res.data.data);
+          setError("");
+          setLoading(false);
+        })
+        .catch((err) => {
+          setError(err);
+          setLoading(false);
+        });
+    }, 1000);
   }, []);
-  if (error) return <>RIP</>;
+  // if (error) return <>RIP</>;
   return (
     <>
       <Typography variant="h1" className="title-font">
@@ -30,30 +32,32 @@ const TopCharacters = () => {
       {loading ? (
         <CircularProgress />
       ) : (
-        <Carousel
-          autoPlay
-          centerMode
-          interval={4000}
-          centerSlidePercentage={20}
-          infiniteLoop
-          showIndicators={false}
-          showThumbs={false}
-          showStatus={false}
-          className="carousel-container"
-          onChange={(e) => console.log(e)}
-        >
-          {charactersList.map((character: any) => {
-            return (
-              <div className="temp" key={character.mal_id}>
-                <img
-                  className="carousel-image"
-                  src={character.images.jpg.large_image_url}
-                />
-                <p className="legend">{character.title_english}</p>
-              </div>
-            );
-          })}
-        </Carousel>
+        <>
+          <Carousel
+            autoPlay
+            centerMode
+            interval={4000}
+            centerSlidePercentage={20}
+            infiniteLoop
+            showIndicators={false}
+            showThumbs={false}
+            showStatus={false}
+            className="carousel-container"
+            // onChange={(e) => console.log(e)}
+          >
+            {charactersList.map((character: any) => {
+              return (
+                <div className="temp" key={character.mal_id}>
+                  <img
+                    className="carousel-image"
+                    src={character.images.jpg.image_url}
+                  />
+                  <p className="legend">{character.title_english}</p>
+                </div>
+              );
+            })}
+          </Carousel>
+        </>
       )}
     </>
   );
