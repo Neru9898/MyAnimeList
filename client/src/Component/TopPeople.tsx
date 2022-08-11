@@ -52,7 +52,7 @@ const TopPeople = () => {
                   className="carousel-image"
                   src={people.images.jpg.image_url}
                 />
-                {/* <p className="legend">{people}</p> */}
+                <p className="legend">{people.name}</p>
               </div>
             );
           })}

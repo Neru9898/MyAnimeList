@@ -52,7 +52,7 @@ const TopCharacters = () => {
                     className="carousel-image"
                     src={character.images.jpg.image_url}
                   />
-                  <p className="legend">{character.title_english}</p>
+                  <p className="legend">{character.name}</p>
                 </div>
               );
             })}
