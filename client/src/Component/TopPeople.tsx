@@ -21,7 +21,7 @@ const TopPeople = () => {
           setError(err);
           setLoading(false);
         });
-    }, 1000);
+    }, 9000);
   }, []);
   // if (error) return <>RIP</>;
 

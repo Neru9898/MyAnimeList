@@ -21,7 +21,7 @@ const TopCharacters = () => {
           setError(err);
           setLoading(false);
         });
-    }, 1000);
+    }, 6000);
   }, []);
   // if (error) return <>RIP</>;
   return (

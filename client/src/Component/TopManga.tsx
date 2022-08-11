@@ -21,7 +21,7 @@ const TopManga = () => {
           setError(err);
           setLoading(false);
         });
-    }, 1000);
+    }, 3000);
   }, []);
   // if (error) return <>RIP</>;
   return (
