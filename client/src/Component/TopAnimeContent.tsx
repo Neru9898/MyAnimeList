@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material";
 import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import CarouselDisplay from "./CarouselDisplay";
+import Loading from "./Loading";
 const delay: any = (ms: number) => {
   return new Promise((res) => {
     setTimeout(res, ms);
@@ -57,7 +58,6 @@ const TopAnimeContent = () => {
         ])
         .then(
           axios.spread((...responses): any => {
-            console.log(responses);
             setAnimeList(responses[0].data.data);
             setMovieList(responses[1].data.data);
             setUpcomingAnimeList(responses[2].data.data);
@@ -80,9 +80,9 @@ const TopAnimeContent = () => {
   }, []);
 
   return (
-    <Box>
+    <>
       {loading ? (
-        <CircularProgress />
+        <Loading />
       ) : (
         <>
           <CarouselDisplay displayList={animeList} title={"Top Anime"} />
@@ -100,7 +100,7 @@ const TopAnimeContent = () => {
           <CarouselDisplay displayList={manhuaList} title={"Top Manhua"} />
         </>
       )}
-    </Box>
+    </>
   );
 };
 
