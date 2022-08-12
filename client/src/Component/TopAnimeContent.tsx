@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
 import axios from "axios";
-import CircularProgress from "@mui/material/CircularProgress";
 import CarouselDisplay from "./CarouselDisplay";
 import Loading from "./Loading";
 const delay: any = (ms: number) => {

@@ -2,18 +2,19 @@ import React from "react";
 import "./App.scss";
 import Header from "./Component/Header";
 import Home from "./Pages/Home";
-
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Anime from "./Pages/Anime";
 const App: React.FC = () => {
   return (
-    <div className="app">
-      <Header />
-      <Home />
-      {/* <h4>In Progress </h4>
-      <p>Create a Home Page (will have popular anime + manga)</p>
-      <p>Create Anime Page</p>
-      <p>Create Manga Page</p>
-      <p>Create Schedules Page</p> */}
-    </div>
+    <Router>
+      <div className="app">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Anime" element={<Anime />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
