@@ -11,7 +11,7 @@ const App: React.FC = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Anime" element={<Anime />} />
+          <Route path="/anime" element={<Anime />} />
         </Routes>
       </div>
     </Router>

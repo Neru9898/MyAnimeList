@@ -3,7 +3,7 @@ import "./Carousel.scss";
 import { Carousel } from "react-responsive-carousel";
 import { Typography } from "@mui/material";
 
-const CarouselDisplay = ({ displayList, title }: any) => {
+const CarouselDisplay = ({ displayList, title, direct }: any) => {
   return (
     <>
       <Typography variant="h1" className="title-font">
@@ -28,7 +28,8 @@ const CarouselDisplay = ({ displayList, title }: any) => {
                 className="carousel-image"
                 src={imageData.images.jpg.large_image_url}
               />
-              <p className="legend">{imageData.title_english}</p>
+              {/* {console.log(imageData)} */}
+              <p className="legend">{imageData.title}</p>
             </div>
           );
         })}

@@ -6,6 +6,7 @@ import BookIcon from "@mui/icons-material/Book";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import HomeIcon from "@mui/icons-material/Home";
 import "./Header.scss";
+import { Link } from "react-router-dom";
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>();
   return (
@@ -23,25 +24,35 @@ const Header: React.FC = () => {
         onClick={() => setIsOpen(false)}
       >
         <Box className="drawer-container">
-          <Typography variant="h4" className="title-font">
-            MAL
-          </Typography>
-          <Typography className="font">
-            <HomeIcon />
-            Home
-          </Typography>
-          <Typography className="font">
-            <TvIcon />
-            Anime
-          </Typography>
-          <Typography className="font">
-            <BookIcon />
-            Manga
-          </Typography>
-          <Typography className="font">
-            <CalendarTodayIcon />
-            Schedule
-          </Typography>
+          <Link to="/">
+            <Typography variant="h4" className="title-font">
+              MAL
+            </Typography>
+          </Link>
+          <Link to="/">
+            <Typography className="font">
+              <HomeIcon />
+              Home
+            </Typography>
+          </Link>
+          <Link to="/anime">
+            <Typography className="font">
+              <TvIcon />
+              Anime
+            </Typography>
+          </Link>
+          <Link to="/manga">
+            <Typography className="font">
+              <BookIcon />
+              Manga
+            </Typography>
+          </Link>
+          <Link to="/schedule">
+            <Typography className="font">
+              <CalendarTodayIcon />
+              Schedule
+            </Typography>
+          </Link>
         </Box>
       </Drawer>
     </Box>

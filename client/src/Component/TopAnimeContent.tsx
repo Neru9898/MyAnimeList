@@ -83,7 +83,11 @@ const TopAnimeContent = () => {
         <Loading />
       ) : (
         <>
-          <CarouselDisplay displayList={animeList} title={"Top Anime"} />
+          <CarouselDisplay
+            displayList={animeList}
+            title={"Top Anime"}
+            direct={"anime"}
+          />
           <CarouselDisplay displayList={movieList} title={"Top Movie"} />
           <CarouselDisplay
             displayList={upcomingAnimeList}
