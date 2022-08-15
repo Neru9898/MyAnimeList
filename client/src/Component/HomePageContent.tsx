@@ -7,7 +7,7 @@ const delay: any = (ms: number) => {
     setTimeout(res, ms);
   });
 };
-const TopAnimeContent = () => {
+const HomePageContent = () => {
   const topAnimeUrl =
     "https://api.jikan.moe/v4/top/anime?page=1&type=tv&filter=bypopularity";
   const topUpcomingAnimeUrl =
@@ -83,11 +83,7 @@ const TopAnimeContent = () => {
         <Loading />
       ) : (
         <>
-          <CarouselDisplay
-            displayList={animeList}
-            title={"Top Anime"}
-            direct={"anime"}
-          />
+          <CarouselDisplay displayList={animeList} title={"Top Anime"} />
           <CarouselDisplay displayList={movieList} title={"Top Movie"} />
           <CarouselDisplay
             displayList={upcomingAnimeList}
@@ -106,4 +102,4 @@ const TopAnimeContent = () => {
   );
 };
 
-export default TopAnimeContent;
+export default HomePageContent;
