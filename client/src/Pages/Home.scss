@@ -12,6 +12,11 @@
   padding: 2.5rem;
   justify-content: space-between;
 
+  .search-bar {
+    font-family: 'Audiowide', cursive;
+
+  }
+
   &::-webkit-scrollbar {
     display: none;
     -ms-overflow-style: none;
