@@ -50,6 +50,7 @@ const Anime = () => {
             {animeContent.map((anime: any, id: number) => (
               <ImageListItem key={id} className="img-display">
                 <img src={anime.images.jpg.image_url} />
+                <div className="caption">{anime.title}</div>
               </ImageListItem>
             ))}
           </Box>
