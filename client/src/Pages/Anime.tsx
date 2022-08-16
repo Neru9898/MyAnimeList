@@ -48,9 +48,21 @@ const Anime = () => {
         ) : (
           <Box className="search-result-container">
             {animeContent.map((anime: any, id: number) => (
+              // <ImageListItem key={id} className="img-display">
+              //   <img src={anime.images.jpg.image_url} />
+              //   <div className="overlay">Test</div>
+              // </ImageListItem>
               <ImageListItem key={id} className="img-display">
-                <img src={anime.images.jpg.image_url} />
-                <div className="caption">{anime.title}</div>
+                <img className="image-img" src={anime.images.jpg.image_url} />
+                <div className="image-overlay ">
+                  <div className="image-title">{anime.title}</div>
+                  <div className="image-title">{anime.type}</div>
+                  <div className="image-title">{anime.episodes}</div>
+                  <div className="image-title">{anime.rating}</div>
+                  <div className="image-title">
+                    {anime.airing ? "Ongoing" : "Finished"}
+                  </div>
+                </div>
               </ImageListItem>
             ))}
           </Box>
