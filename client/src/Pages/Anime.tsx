@@ -1,4 +1,10 @@
-import { Grid, ImageList, TextField, ImageListItem } from "@mui/material";
+import {
+  Grid,
+  ImageList,
+  TextField,
+  ImageListItem,
+  styled,
+} from "@mui/material";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CarouselDisplay from "../Component/CarouselDisplay";
@@ -16,6 +22,26 @@ const Anime = () => {
   const [animeContent, setAnimeContent] = useState<any>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<any>();
+
+  const CssTextField = styled(TextField)({
+    "& label.Mui-focused": {
+      color: "#FFFBF2",
+    },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: "#FFFBF2",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "red",
+      },
+      "&:hover fieldset": {
+        borderColor: "pink",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#FFFBF2",
+      },
+    },
+  });
   useEffect(() => {
     setLoading(true);
 
@@ -23,7 +49,7 @@ const Anime = () => {
       .get(`https://api.jikan.moe/v4/anime?letter=${searchAnime}`)
       .then((res) => {
         setAnimeContent(res.data.data);
-        console.log(res.data.data);
+        // console.log(res.data.data);
         setError("");
         setLoading(false);
       })
@@ -35,12 +61,12 @@ const Anime = () => {
   return (
     <Grid container className="anime-container">
       <Grid item xs={8}>
-        <TextField
-          className="search-bar"
-          label="Search Anime"
-          variant="standard"
-          onChange={(e) => {
+        <CssTextField
+          label="Custom CSS"
+          id="custom-css-outlined-input"
+          onChange={(e: any) => {
             setSearchAnime(e.target.value);
+            console.log(e.target.value);
           }}
         />
         {loading ? (
