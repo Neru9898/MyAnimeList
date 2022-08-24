@@ -4,6 +4,11 @@ import {
   TextField,
   ImageListItem,
   styled,
+  Checkbox,
+  FormControlLabel,
+  FormControl,
+  FormGroup,
+  FormLabel,
 } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -23,25 +28,6 @@ const Anime = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<any>();
 
-  const CssTextField = styled(TextField)({
-    "& label.Mui-focused": {
-      color: "#FFFBF2",
-    },
-    "& .MuiInput-underline:after": {
-      borderBottomColor: "#FFFBF2",
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "red",
-      },
-      "&:hover fieldset": {
-        borderColor: "pink",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "#FFFBF2",
-      },
-    },
-  });
   useEffect(() => {
     setLoading(true);
 
@@ -61,7 +47,7 @@ const Anime = () => {
   return (
     <Grid container className="anime-container">
       <Grid item xs={8}>
-        <CssTextField
+        <TextField
           label="Custom CSS"
           id="custom-css-outlined-input"
           onChange={(e: any) => {
@@ -69,6 +55,136 @@ const Anime = () => {
             console.log(e.target.value);
           }}
         />
+        {/* <FormControl component="fieldset"> */}
+        <FormLabel component="legend">Type</FormLabel>
+        <FormGroup aria-label="position" row>
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Tv"
+            labelPlacement="end"
+          />{" "}
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Movie"
+            labelPlacement="end"
+          />{" "}
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Ova"
+            labelPlacement="end"
+          />{" "}
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Special"
+            labelPlacement="end"
+          />
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Ona"
+            labelPlacement="end"
+          />
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Music"
+            labelPlacement="end"
+          />
+        </FormGroup>
+        <FormLabel component="legend">Status</FormLabel>
+        <FormGroup aria-label="position" row>
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Airing"
+            labelPlacement="end"
+          />{" "}
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Complete"
+            labelPlacement="end"
+          />{" "}
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Upcoming"
+            labelPlacement="end"
+          />{" "}
+        </FormGroup>
+
+        <FormLabel component="legend">Rating</FormLabel>
+        <FormGroup aria-label="position" row>
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="G"
+            labelPlacement="end"
+          />{" "}
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="PG"
+            labelPlacement="end"
+          />{" "}
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="PG13"
+            labelPlacement="end"
+          />{" "}
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="R"
+            labelPlacement="end"
+          />{" "}
+        </FormGroup>
+
+        <FormLabel component="legend">Sort By</FormLabel>
+        <FormGroup aria-label="position" row>
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Title"
+            labelPlacement="end"
+          />{" "}
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Type"
+            labelPlacement="end"
+          />{" "}
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Rating"
+            labelPlacement="end"
+          />{" "}
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Episodes"
+            labelPlacement="end"
+          />{" "}
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Score"
+            labelPlacement="end"
+          />{" "}
+          <FormControlLabel
+            value="end"
+            control={<Checkbox />}
+            label="Popularity"
+            labelPlacement="end"
+          />{" "}
+        </FormGroup>
+        {/* </FormControl> */}
         {loading ? (
           <Loading />
         ) : (
