@@ -20,17 +20,3 @@
     display: none; /* for Chrome, Safari, and Opera */
   }
 }
-
-.app-header {
-  display: flex;
-  margin: 1rem;
-  gap: 5rem;
-  align-items: center;
-
-  h1 {
-    color: #e31c25;
-  }
-  span {
-    color: white;
-  }
-}

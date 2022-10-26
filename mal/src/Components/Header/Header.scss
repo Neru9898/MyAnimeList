@@ -1,0 +1,15 @@
+.app-header {
+  display: flex;
+  margin: 1rem;
+  gap: 6rem;
+  align-items: center;
+
+  h1 {
+    color: #e31c25;
+    font-size: 3rem;
+  }
+  span {
+    color: white;
+    font-size: 1rem;
+  }
+}
