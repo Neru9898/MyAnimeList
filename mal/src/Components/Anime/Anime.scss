@@ -1,0 +1,19 @@
+.anime-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  .grid-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      height: 100%;
+      width: 50%;
+    }
+
+    span {
+      color: white;
+    }
+  }
+}
