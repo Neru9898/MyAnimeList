@@ -1,6 +1,6 @@
-import { CircularProgress, Pagination } from "@mui/material";
+import { CircularProgress, Pagination, PaginationItem } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Anime.scss";
 const Anime = () => {
   const [animeList, setAnimeList] = useState<any>();
@@ -39,12 +39,8 @@ const Anime = () => {
                 );
               })}
             </div>
-            <Pagination
-              count={10}
-              size="large"
-              variant="outlined"
-              color="primary"
-            />
+            <Pagination count={10} size="large" variant="outlined" />
+            <PaginationItem />
           </div>
           <div className="right-container">
             <img
