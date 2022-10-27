@@ -43,7 +43,7 @@ const Manga = () => {
       (
       <div className="left-container">
         <div className="top-control-container">
-          <Typography variant="h5">Top Anime</Typography>{" "}
+          <Typography variant="h5">Top Manga</Typography>{" "}
           <Pagination
             count={currPage.last}
             page={currPage.current}
