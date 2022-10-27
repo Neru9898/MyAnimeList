@@ -1,9 +1,4 @@
-import {
-  CircularProgress,
-  Pagination,
-  PaginationItem,
-  Typography,
-} from "@mui/material";
+import { CircularProgress, Pagination, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./Anime.scss";
