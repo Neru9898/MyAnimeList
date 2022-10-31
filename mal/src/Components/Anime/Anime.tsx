@@ -80,15 +80,15 @@ const Anime = () => {
           <div className="grid-container">
             {animeList.map((anime: any) => {
               return (
-                <a
+                <Link
                   key={anime.mal_id}
-                  href={`/anime/${anime.mal_id}`}
+                  to={`/anime/${anime.mal_id}`}
                   className="grid-content"
                   onMouseOver={() => handleChange(anime)}
                 >
                   <img src={anime.images.jpg.image_url} alt={anime.title} />
                   <span>{anime.title}</span>
-                </a>
+                </Link>
               );
             })}
           </div>

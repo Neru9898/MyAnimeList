@@ -5,7 +5,7 @@ import Home from "./Components/Home/Home";
 import Anime from "./Components/Anime/Anime";
 import Manga from "./Components/Manga/Manga";
 import Movies from "./Components/Movies/Movies";
-import InfoPage from "./Components/InfoPage/InfoPage";
+import InfoPage from "./Components/AnimeInfo/AnimeInfo";
 function App() {
   return (
     <div className="App">
