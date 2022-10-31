@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { KeyboardArrowRight, KeyboardArrowLeft } from "@mui/icons-material";
 import "./Anime.scss";
+import { Link } from "react-router-dom";
 const Anime = () => {
   const [animeList, setAnimeList] = useState<any>();
   const [currAnime, setCurrAnime] = useState<any>();
@@ -79,14 +80,15 @@ const Anime = () => {
           <div className="grid-container">
             {animeList.map((anime: any) => {
               return (
-                <div
+                <a
                   key={anime.mal_id}
+                  href={`/anime/${anime.mal_id}`}
                   className="grid-content"
                   onMouseOver={() => handleChange(anime)}
                 >
                   <img src={anime.images.jpg.image_url} alt={anime.title} />
                   <span>{anime.title}</span>
-                </div>
+                </a>
               );
             })}
           </div>

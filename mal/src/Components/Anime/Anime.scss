@@ -52,10 +52,11 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+        text-decoration: none;
 
         img {
           height: 100%;
-          width: 50%;
+          width: 60%;
           &:hover {
             transition: transform 150ms ease-in-out;
             transform: scale(1.05);
