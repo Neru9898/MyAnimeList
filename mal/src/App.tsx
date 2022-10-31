@@ -5,6 +5,7 @@ import Home from "./Components/Home/Home";
 import Anime from "./Components/Anime/Anime";
 import Manga from "./Components/Manga/Manga";
 import Movies from "./Components/Movies/Movies";
+import InfoPage from "./Components/InfoPage/InfoPage";
 function App() {
   return (
     <div className="App">
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/anime" element={<Anime />} />
+          <Route path="/anime/:id" element={<InfoPage />} />
           <Route path="/manga" element={<Manga />} />
           <Route path="/movie" element={<Movies />} />
         </Routes>
