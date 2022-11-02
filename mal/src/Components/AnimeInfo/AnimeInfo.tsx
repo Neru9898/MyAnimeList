@@ -6,17 +6,49 @@ import "./AnimeInfo.scss";
 const InfoPage = () => {
   const params = useParams();
   const [currInfo, setCurrInfo] = useState<any>();
+  const [animeCharacters, setAnimeCharacters] = useState<any>();
+  const [animeStaff, setAnimeStaff] = useState<any>();
+  const [animeVideo, setAnimeVideo] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    axios
+  const delay = (ms: number) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
+  const getData = async () => {
+    await axios
       .get(`https://api.jikan.moe/v4/anime/${params.id}/full`)
       .then((res: any) => {
         setCurrInfo(res.data.data);
         console.log(res.data.data);
+      });
+
+    await axios
+      .get(`https://api.jikan.moe/v4/anime/${params.id}/characters`)
+      .then((res: any) => {
+        setAnimeCharacters(res.data.data);
+        console.log(res.data.data);
+      });
+
+    await axios
+      .get(`https://api.jikan.moe/v4/anime/${params.id}/staff`)
+      .then((res: any) => {
+        setAnimeStaff(res.data.data);
+        console.log(res.data.data);
+      });
+
+    await delay(2500);
+
+    await axios
+      .get(`https://api.jikan.moe/v4/anime/${params.id}/episodes`)
+      .then((res: any) => {
+        setAnimeVideo(res.data.data);
+        console.log(res.data.data);
 
         setLoading(false);
       });
+  };
+  useEffect(() => {
+    getData();
   }, []);
 
   const getGenres = (genres: any) => {
@@ -26,9 +58,9 @@ const InfoPage = () => {
   };
   return (
     <div className="info-container">
-      {loading ? (
-        <CircularProgress />
-      ) : (
+      {loading && <CircularProgress />}
+
+      {!loading && (
         <div className="left-info-contianer">
           <img src={currInfo.images.jpg.image_url} alt="Temp" />
 
@@ -46,6 +78,30 @@ const InfoPage = () => {
           <Typography variant="h6">
             Airing Duration: {currInfo.aired.string}
           </Typography>
+        </div>
+      )}
+
+      {!loading && (
+        <div className="middle-info-contianer">
+          <Typography variant="h6">Summary: {currInfo.synopsis}</Typography>
+          <Typography variant="h5">Characters</Typography>{" "}
+          <div className="middle-grid-contianer">
+            {animeCharacters.map((character: any) => {
+              console.log(character.character);
+              return (
+                <span>
+                  <Typography variant="h6">
+                    {character.character.name}
+                  </Typography>{" "}
+                  <Typography variant="h6">{character.role}</Typography>
+                  <img
+                    src={character.character.images.jpg.image_url}
+                    alt="temo"
+                  />
+                </span>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
