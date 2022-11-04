@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CircularProgress, Typography } from "@mui/material";
 import "./AnimeInfo.scss";
+
 const InfoPage = () => {
   const params = useParams();
   const [currInfo, setCurrInfo] = useState<any>();
@@ -19,30 +20,32 @@ const InfoPage = () => {
       .get(`https://api.jikan.moe/v4/anime/${params.id}/full`)
       .then((res: any) => {
         setCurrInfo(res.data.data);
-        console.log(res.data.data);
+        console.log(res.data.data, "basic");
       });
+    await delay(1000);
 
     await axios
       .get(`https://api.jikan.moe/v4/anime/${params.id}/characters`)
       .then((res: any) => {
         setAnimeCharacters(res.data.data);
-        console.log(res.data.data);
+        console.log(res.data.data, "char");
       });
+    await delay(1000);
 
     await axios
       .get(`https://api.jikan.moe/v4/anime/${params.id}/staff`)
       .then((res: any) => {
         setAnimeStaff(res.data.data);
-        console.log(res.data.data);
+        console.log(res.data.data, "staff");
       });
 
-    await delay(2500);
+    await delay(1000);
 
     await axios
       .get(`https://api.jikan.moe/v4/anime/${params.id}/episodes`)
       .then((res: any) => {
         setAnimeVideo(res.data.data);
-        console.log(res.data.data);
+        console.log(res.data.data, "ep");
 
         setLoading(false);
       });
@@ -87,7 +90,6 @@ const InfoPage = () => {
           <Typography variant="h5">Characters</Typography>{" "}
           <div className="middle-grid-contianer">
             {animeCharacters.map((character: any) => {
-              console.log(character.character);
               return (
                 <span>
                   <Typography variant="h6">
@@ -99,6 +101,39 @@ const InfoPage = () => {
                     alt="temo"
                   />
                 </span>
+              );
+            })}
+          </div>
+          <Typography variant="h5">Staff</Typography>{" "}
+          <div className="middle-grid-contianer">
+            {animeStaff.map((staff: any) => {
+              return (
+                <span>
+                  <Typography variant="h6">{staff.person.name}</Typography>{" "}
+                  <Typography variant="h6">
+                    Positions: {getGenres(staff.positions)}
+                  </Typography>
+                  <img src={staff.person.images.jpg.image_url} alt="temo" />
+                </span>
+              );
+            })}
+          </div>
+          <Typography variant="h5">Episodes</Typography>{" "}
+          <div className="middle-grid-video-contianer">
+            {animeVideo.map((video: any) => {
+              return (
+                <div className="video-container">
+                  <Typography variant="h6">Title: {video.title}</Typography>{" "}
+                  <Typography variant="h6">Episode: {video.mal_id}</Typography>{" "}
+                  <a
+                    href={video.url}
+                    style={{
+                      backgroundImage: `url(${video.url});width:194px;height:129px;`,
+                    }}
+                  >
+                    Link
+                  </a>
+                </div>
               );
             })}
           </div>
