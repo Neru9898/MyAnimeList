@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CircularProgress, Typography } from "@mui/material";
 import "./AnimeInfo.scss";
+import { delay } from "../../Helpers/delay";
+import { arrayToString } from "../../Helpers/arrayToString";
 
-const InfoPage = () => {
+const AnimeInfo = () => {
   const params = useParams();
   const [currInfo, setCurrInfo] = useState<any>();
   const [animeCharacters, setAnimeCharacters] = useState<any>();
@@ -12,9 +14,6 @@ const InfoPage = () => {
   const [animeVideo, setAnimeVideo] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
 
-  const delay = (ms: number) => {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  };
   const getData = async () => {
     await axios
       .get(`https://api.jikan.moe/v4/anime/${params.id}/full`)
@@ -54,11 +53,6 @@ const InfoPage = () => {
     getData();
   }, []);
 
-  const getGenres = (genres: any) => {
-    let genreList = "";
-    currInfo.genres.map((genre: any) => (genreList += `${genre.name}, `));
-    return genreList;
-  };
   return (
     <div className="info-container">
       {loading && <CircularProgress />}
@@ -75,7 +69,7 @@ const InfoPage = () => {
           <Typography variant="h6">Rating: {currInfo.rating}</Typography>
           <Typography variant="h6">Status: {currInfo.status}</Typography>
           <Typography variant="h6">
-            Genre: {getGenres(currInfo.genres)}
+            Genre: {arrayToString(currInfo.genres)}
           </Typography>
 
           <Typography variant="h6">
@@ -86,7 +80,8 @@ const InfoPage = () => {
 
       {!loading && (
         <div className="middle-info-contianer">
-          <Typography variant="h6">Summary: {currInfo.synopsis}</Typography>
+          <Typography variant="h5">Summary</Typography>{" "}
+          <Typography variant="h6">{currInfo.synopsis}</Typography>
           <Typography variant="h5">Characters</Typography>{" "}
           <div className="middle-grid-contianer">
             {animeCharacters.map((character: any) => {
@@ -111,7 +106,7 @@ const InfoPage = () => {
                 <span>
                   <Typography variant="h6">{staff.person.name}</Typography>{" "}
                   <Typography variant="h6">
-                    Positions: {getGenres(staff.positions)}
+                    Positions: {arrayToString(staff.positions)}
                   </Typography>
                   <img src={staff.person.images.jpg.image_url} alt="temo" />
                 </span>
@@ -143,4 +138,4 @@ const InfoPage = () => {
   );
 };
 
-export default InfoPage;
+export default AnimeInfo;
