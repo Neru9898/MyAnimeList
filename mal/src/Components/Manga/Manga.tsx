@@ -1,6 +1,7 @@
 import { CircularProgress, Pagination, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Manga = () => {
   const [mangaList, setMangaList] = useState<any>();
@@ -40,7 +41,6 @@ const Manga = () => {
   };
   return (
     <div className="anime-container">
-      (
       <div className="left-container">
         <div className="top-control-container">
           <Typography variant="h5">Top Manga</Typography>{" "}
@@ -60,15 +60,16 @@ const Manga = () => {
           <div className="grid-container">
             {mangaList.map((anime: any) => {
               return (
-                <div
+                <Link
                   key={anime.mal_id}
                   className="grid-content"
+                  to={`/manga/${anime.mal_id}`}
                   onMouseOver={() => handleChange(anime)}
                 >
                   <img src={anime.images.jpg.image_url} alt={anime.title} />
                   <span>{anime.title}</span>
                   <span>{anime.title_japanese}</span>
-                </div>
+                </Link>
               );
             })}
           </div>
