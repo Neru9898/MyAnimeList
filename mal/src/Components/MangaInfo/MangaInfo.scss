@@ -1,0 +1,42 @@
+.manga-info-container {
+  //   display: flex;
+  width: inherit;
+  height: inherit;
+}
+
+.main-container {
+  height: inherit;
+  width: inherit;
+
+  h3 {
+    color: white;
+    border-bottom: 0.2rem solid white;
+    transition: 500ms ease;
+  }
+
+  &:hover {
+    h3 {
+      transition: 500ms ease;
+      border-bottom: 0.2rem solid #e31c25;
+    }
+  }
+  .left-container {
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+    width: 25%;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    h6 {
+      color: white;
+      font-size: medium;
+      padding-left: 0.5rem;
+    }
+
+    img {
+      height: 30rem;
+      width: fit-content;
+      align-self: center;
+    }
+  }
+}
