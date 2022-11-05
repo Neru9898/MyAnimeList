@@ -68,7 +68,6 @@ const Manga = () => {
                 >
                   <img src={anime.images.jpg.image_url} alt={anime.title} />
                   <span>{anime.title}</span>
-                  <span>{anime.title_japanese}</span>
                 </Link>
               );
             })}

@@ -40,7 +40,6 @@ function Movies() {
   };
   return (
     <div className="anime-container">
-      (
       <div className="left-container">
         <div className="top-control-container">
           <Typography variant="h5">Top Movies</Typography>{" "}
@@ -67,7 +66,6 @@ function Movies() {
                 >
                   <img src={anime.images.jpg.image_url} alt={anime.title} />
                   <span>{anime.title}</span>
-                  <span>{anime.title_japanese}</span>
                 </div>
               );
             })}
