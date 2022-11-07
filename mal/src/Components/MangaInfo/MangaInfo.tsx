@@ -138,14 +138,15 @@ const MangaInfo = () => {
             <div className="recomendations-container">
               {mangaRecomendation.map((manga: any) => {
                 return (
-                  <Link
-                    to={`/manga/${manga.entry.mal_id}`}
-                    onClick={() => setLoading(true)}
-                    className="recomendations-content"
-                  >
-                    <img src={manga.entry.images.jpg.image_url} alt="temp" />
-                    <Typography variant="h6">{manga.entry.title}</Typography>
-                  </Link>
+                  <div className="recomendations-content">
+                    <Link
+                      to={`/manga/${manga.entry.mal_id}`}
+                      onClick={() => setLoading(true)}
+                    >
+                      <img src={manga.entry.images.jpg.image_url} alt="temp" />
+                      <Typography variant="h6">{manga.entry.title}</Typography>
+                    </Link>
+                  </div>
                 );
               })}
             </div>
