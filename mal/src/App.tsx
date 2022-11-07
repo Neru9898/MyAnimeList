@@ -7,6 +7,7 @@ import Manga from "./Components/Manga/Manga";
 import Movies from "./Components/Movies/Movies";
 import AnimeInfo from "./Components/AnimeInfo/AnimeInfo";
 import MangaInfo from "./Components/MangaInfo/MangaInfo";
+import MovieInfo from "./Components/MovieInfo/MovieInfo";
 function App() {
   return (
     <div className="App">
@@ -19,6 +20,7 @@ function App() {
           <Route path="/manga" element={<Manga />} />
           <Route path="/manga/:id" element={<MangaInfo />} />
           <Route path="/movie" element={<Movies />} />
+          <Route path="/movie/:id" element={<MovieInfo />} />
         </Routes>
       </Router>
     </div>

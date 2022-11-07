@@ -1,6 +1,7 @@
 import { CircularProgress, Pagination, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 function Movies() {
   const [movieList, setMovieList] = useState<any>();
   const [currMovie, setCurrMovie] = useState<any>();
@@ -59,14 +60,15 @@ function Movies() {
           <div className="grid-container">
             {movieList.map((anime: any) => {
               return (
-                <div
+                <Link
                   key={anime.mal_id}
                   className="grid-content"
+                  to={`/movie/${anime.mal_id}`}
                   onMouseOver={() => handleChange(anime)}
                 >
                   <img src={anime.images.jpg.image_url} alt={anime.title} />
                   <span>{anime.title}</span>
-                </div>
+                </Link>
               );
             })}
           </div>
