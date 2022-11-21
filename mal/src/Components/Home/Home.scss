@@ -1,0 +1,12 @@
+.schedule-contatiner {
+  color: white;
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    img {
+      height: 15rem;
+      width: 10rem;
+    }
+  }
+}
