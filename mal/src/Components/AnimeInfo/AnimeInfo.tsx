@@ -120,12 +120,19 @@ const AnimeInfo = () => {
                 <div className="video-container">
                   <Typography variant="h6">Title: {video.title}</Typography>{" "}
                   <Typography variant="h6">Episode: {video.mal_id}</Typography>{" "}
+                  <Typography variant="h6">
+                    Filler: {video.filler ? "Yes" : "No"}
+                  </Typography>{" "}
+                  <Typography variant="h6">
+                    Recap: {video.recap ? "Yes" : "No"}
+                  </Typography>{" "}
                   <a
                     href={video.url}
                     style={{
                       backgroundImage: `url(${video.url});width:194px;height:129px;`,
                     }}
                   >
+                    {/* <img src={video.url} alt="temp"  /> */}
                     Link
                   </a>
                 </div>
