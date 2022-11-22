@@ -88,16 +88,16 @@ const Home = () => {
                 <div className="recomendations-content">
                   <img src={anime.images.jpg.image_url} alt="temp" />
                   <div className="text-box">
-                    <span>{anime.title}</span>
-                    <span>Episodes: {anime.episodes}</span>
-                    <span>Ratings: {anime.rating}</span>
+                    <Typography>{anime.title}</Typography>
+                    <Typography>Episodes: {anime.episodes}</Typography>
+                    <Typography>Ratings: {anime.rating}</Typography>
                   </div>
                 </div>
               );
             })
           )}
         </div>
-        <Typography variant="h5">Next Anime Season</Typography>{" "}
+        {/* <Typography variant="h5">Next Anime Season</Typography>{" "}
         <div className="recomendations-container">
           {loading ? (
             <CircularProgress />
@@ -117,7 +117,7 @@ const Home = () => {
               );
             })
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );
