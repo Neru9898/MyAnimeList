@@ -20,7 +20,16 @@
   width: inherit;
   height: inherit;
   display: flex;
+  flex-direction: row;
   color: white;
+  gap: 1rem;
+  // span {
+  //   top: 50%;
+  //   left: 50%;
+  //   height: fit-content;
+  //   width: 100%;
+  //   // outline: auto;
+  // }
 
   // outline: 1px white solid;
 }
@@ -34,10 +43,8 @@
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   scrollbar-width: none; /* for Firefox */
   overflow-y: scroll;
+  @include scrollBarCSS();
 
-  &::-webkit-scrollbar {
-    display: none; /* for Chrome, Safari, and Opera */
-  }
   .content {
     padding: 1rem;
     display: flex;
@@ -57,22 +64,20 @@
 .right-conatiner {
   width: 75%;
   height: inherit;
+  gap: 1rem;
   // outline: auto;
-  .recomendations-container {
-    height: 40%;
+  .carousel-container {
+    height: 45%;
     width: 100%;
     display: flex;
     gap: 3rem;
     justify-content: flex-start;
-    padding-left: 5rem;
+    padding-left: 4rem;
+    overflow: hidden;
     overflow-x: scroll;
-
     @include scrollBarCSS();
-    &::-webkit-scrollbar {
-      display: none; /* for Chrome, Safari, and Opera */
-    }
 
-    .recomendations-content {
+    .carousel-content {
       background: rgba(185, 185, 185, 0.2);
       border-radius: 1rem;
       height: 18rem;
@@ -80,7 +85,6 @@
       position: relative;
       align-self: center;
       display: flex;
-      transition: 0.3s all ease-in-out;
 
       &::after {
         content: "";
@@ -89,8 +93,7 @@
         width: 0rem;
         right: 0;
         bottom: 0;
-
-        transition: 500ms all ease-in-out;
+        transition: 500ms all ease;
       }
       &:hover::after {
         content: "";
@@ -109,8 +112,7 @@
         position: absolute;
         height: 0rem;
         width: 0rem;
-
-        transition: 500ms all ease-in-out;
+        transition: 500ms all ease;
       }
       &:hover::before {
         content: "";
@@ -128,6 +130,7 @@
         border-radius: 1rem;
         margin-left: -2rem;
         margin-top: -3rem;
+        transition: 500ms transform ease;
       }
       .text-box {
         display: flex;
@@ -138,7 +141,7 @@
       &:hover {
         img {
           transform: scale(1.1);
-          transition: 0.3s all ease-in-out;
+          transition: 500ms transform ease;
         }
       }
     }

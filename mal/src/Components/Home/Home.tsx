@@ -54,13 +54,13 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      {/* This is a just fun project using Jikan Api */}
-      {loading ? (
-        <CircularProgress />
-      ) : (
-        <div className="schedule-contatiner">
-          <Typography variant="h5">Today's Schedule</Typography>
-          {schedule.map((anime: any) => {
+      <div className="schedule-contatiner">
+        <Typography variant="h5">Today's Schedule</Typography>
+
+        {loading ? (
+          <CircularProgress />
+        ) : (
+          schedule.map((anime: any) => {
             return (
               <div className="content">
                 <img src={anime.images.jpg.image_url} alt={anime.title} />
@@ -74,18 +74,19 @@ const Home = () => {
                 </div>
               </div>
             );
-          })}
-        </div>
-      )}
+          })
+        )}
+      </div>
+
       <div className="right-conatiner">
         <Typography variant="h5">Current Anime Season</Typography>{" "}
-        <div className="recomendations-container">
+        <div className="carousel-container">
           {loading ? (
             <CircularProgress />
           ) : (
             currSeason.map((anime: any) => {
               return (
-                <div className="recomendations-content">
+                <div className="carousel-content">
                   <img src={anime.images.jpg.image_url} alt="temp" />
                   <div className="text-box">
                     <Typography>{anime.title}</Typography>
@@ -97,14 +98,14 @@ const Home = () => {
             })
           )}
         </div>
-        {/* <Typography variant="h5">Next Anime Season</Typography>{" "}
-        <div className="recomendations-container">
+        <Typography variant="h5">Next Anime Season</Typography>{" "}
+        <div className="carousel-container">
           {loading ? (
             <CircularProgress />
           ) : (
             nextSeason.map((anime: any) => {
               return (
-                <div className="recomendations-content">
+                <div className="carousel-content">
                   <img src={anime.images.jpg.image_url} alt="temp" />
                   <div className="text-box">
                     <span>{anime.title}</span>
@@ -117,7 +118,7 @@ const Home = () => {
               );
             })
           )}
-        </div> */}
+        </div>
       </div>
     </div>
   );
