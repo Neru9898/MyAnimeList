@@ -1,4 +1,4 @@
-import { CircularProgress, TextField, Typography } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { KeyboardArrowRight, KeyboardArrowLeft } from "@mui/icons-material";
@@ -84,18 +84,16 @@ const Anime = () => {
       <div className="left-container">
         <div className="top-control-container">
           <Typography variant="h5">Search Anime</Typography>
-          <TextField
-            id="outlined-basic"
-            label="Outlined"
-            variant="outlined"
+          <input
+            className="search-input"
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-        {loading ? (
-          <CircularProgress />
-        ) : (
-          <div className="grid-container">
-            {currSearchAnime.map((anime: any) => {
+        <div className="grid-container">
+          {loading ? (
+            <CircularProgress />
+          ) : (
+            currSearchAnime.map((anime: any) => {
               return (
                 <Link
                   key={anime.mal_id}
@@ -104,14 +102,14 @@ const Anime = () => {
                   onMouseOver={() => handleChange(anime)}
                 >
                   <img src={anime.images.jpg.image_url} alt={anime.title} />
-                  <span>{anime.title}</span>
+                  <Typography className="text">{anime.title}</Typography>
                 </Link>
               );
-            })}
-          </div>
-        )}
+            })
+          )}
+        </div>
 
-        <div className="top-control-container">
+        {/* <div className="top-control-container">
           <Typography variant="h5">Top Anime</Typography>
         </div>
 
@@ -155,7 +153,7 @@ const Anime = () => {
               );
             })}
           </div>
-        )}
+        )} */}
       </div>
 
       <div className="right-container">
