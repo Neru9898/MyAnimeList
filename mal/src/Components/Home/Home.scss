@@ -1,7 +1,7 @@
 @mixin scrollBarCSS {
   &::-webkit-scrollbar {
     border-radius: 10px;
-    height: 0.15rem;
+    height: 0.45rem;
     width: 0.45rem;
   }
 
@@ -23,15 +23,6 @@
   flex-direction: row;
   color: white;
   gap: 1rem;
-  // span {
-  //   top: 50%;
-  //   left: 50%;
-  //   height: fit-content;
-  //   width: 100%;
-  //   // outline: auto;
-  // }
-
-  // outline: 1px white solid;
 }
 
 .schedule-contatiner {
@@ -39,6 +30,7 @@
   flex-direction: column;
   width: 25%;
   height: 100%;
+  padding-right: 0.75rem;
   overflow: hidden;
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   scrollbar-width: none; /* for Firefox */
@@ -48,16 +40,63 @@
   .content {
     padding: 1rem;
     display: flex;
+    gap: 1rem;
+    transition: all ease 500ms;
+
     img {
       height: 15rem;
       width: 10rem;
+      border-radius: 1rem;
+      transition: all ease 500ms;
     }
 
     .content-text {
       display: flex;
       flex-direction: column;
-      padding-left: 0.5rem;
+      padding: 1rem;
       gap: 1rem;
+      background: rgba(185, 185, 185, 0.2);
+      border-radius: 1rem;
+      position: relative;
+      // &::after {
+      //   content: "";
+      //   position: absolute;
+      //   // width: 100%;
+      //   // height: 100%;
+      //   // left: 0;
+      //   // top: 0;
+      //   border-radius: 1rem;
+      //   z-index: -1;
+      //   background: linear-gradient(
+      //     to right,
+      //     rgba(185, 185, 185, 0.2) 90%,
+      //     rgba(227, 28, 37, 0.7) 98%
+      //   );
+      //   transition: background 1s ease;
+      // }
+
+      // &:hover::after {
+      //   content: "";
+      //   // position: absolute;
+      //   width: 100%;
+      //   height: 100%;
+      //   left: 0;
+      //   top: 0;
+      //   border-radius: 1rem;
+      //   z-index: 1;
+      //   background: linear-gradient(
+      //     to right,
+      //     rgba(185, 185, 185, 0.05) 90%,
+      //     rgba(227, 28, 37, 0.7) 98%
+      //   );
+      // }
+    }
+
+    &:hover {
+      transform: translateX(1rem);
+      img {
+        transform: scale(1.05, 1.1) translateX(1rem);
+      }
     }
   }
 }
