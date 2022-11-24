@@ -67,7 +67,7 @@ function Movies() {
                   onMouseOver={() => handleChange(anime)}
                 >
                   <img src={anime.images.jpg.image_url} alt={anime.title} />
-                  <span>{anime.title}</span>
+                  <Typography className="text">{anime.title}</Typography>
                 </Link>
               );
             })}

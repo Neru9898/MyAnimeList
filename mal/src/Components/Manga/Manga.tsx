@@ -64,10 +64,9 @@ const Manga = () => {
       <div className="left-container">
         <div className="top-control-container">
           <Typography variant="h5">Search Manga</Typography>{" "}
-          <TextField
-            id="outlined-basic"
-            label="Outlined"
-            variant="outlined"
+          <input
+            className="search-input"
+            placeholder="Search Manga"
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
@@ -85,7 +84,7 @@ const Manga = () => {
                   onMouseOver={() => handleChange(anime)}
                 >
                   <img src={anime.images.jpg.image_url} alt={anime.title} />
-                  <span>{anime.title}</span>
+                  <Typography className="text">{anime.title}</Typography>
                 </Link>
               );
             })}
@@ -109,7 +108,7 @@ const Manga = () => {
                   onMouseOver={() => handleChange(anime)}
                 >
                   <img src={anime.images.jpg.image_url} alt={anime.title} />
-                  <span>{anime.title}</span>
+                  <Typography className="text">{anime.title}</Typography>
                 </Link>
               );
             })}

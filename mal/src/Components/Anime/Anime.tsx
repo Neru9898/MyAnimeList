@@ -86,6 +86,7 @@ const Anime = () => {
           <Typography variant="h5">Search Anime</Typography>
           <input
             className="search-input"
+            placeholder="Search Anime"
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
@@ -109,7 +110,7 @@ const Anime = () => {
           )}
         </div>
 
-        {/* <div className="top-control-container">
+        <div className="top-control-container">
           <Typography variant="h5">Top Anime</Typography>
         </div>
 
@@ -126,7 +127,7 @@ const Anime = () => {
                   onMouseOver={() => handleChange(anime)}
                 >
                   <img src={anime.images.jpg.image_url} alt={anime.title} />
-                  <span>{anime.title}</span>
+                  <Typography className="text">{anime.title}</Typography>
                 </Link>
               );
             })}
@@ -148,12 +149,12 @@ const Anime = () => {
                   onMouseOver={() => handleChange(anime)}
                 >
                   <img src={anime.images.jpg.image_url} alt={anime.title} />
-                  <span>{anime.title}</span>
+                  <Typography className="text">{anime.title}</Typography>
                 </Link>
               );
             })}
           </div>
-        )} */}
+        )}
       </div>
 
       <div className="right-container">
