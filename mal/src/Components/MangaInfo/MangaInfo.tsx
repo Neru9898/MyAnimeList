@@ -72,7 +72,7 @@ const MangaInfo = () => {
       {!loading && (
         <div className="main-container">
           <div className="left-container">
-            <img src={currInfo.images.webp.image_url} alt="temp" />
+            <img src={currInfo.images.webp.image_url} alt="No Content" />
             <Typography variant="h6">
               Authors: {arrayToString(currInfo.authors)}
             </Typography>{" "}
@@ -107,7 +107,7 @@ const MangaInfo = () => {
                     {/* {console.log(character.character.images.jpg.image_url)} */}
                     <img
                       src={character.character.images.jpg.image_url}
-                      alt="temp"
+                      alt="No Content"
                     />
                     <span>
                       <h4>{character.character.name}</h4>
@@ -122,7 +122,7 @@ const MangaInfo = () => {
               {mangaNews.map((news: any) => {
                 return (
                   <div className="news-content">
-                    <img src={news.images.jpg.image_url} alt="temp" />
+                    <img src={news.images.jpg.image_url} alt="No Content" />
                     <span>
                       <Typography variant="h6">{news.title}</Typography>{" "}
                       <p>{news.excerpt}</p>{" "}
