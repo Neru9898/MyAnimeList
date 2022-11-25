@@ -79,10 +79,16 @@ const MangaInfo = () => {
             <Typography variant="h6">Chapters: {currInfo.chapters}</Typography>
             <Typography variant="h6">Status: {currInfo.status}</Typography>
             <Typography variant="h6">
-              Generes: {arrayToString(currInfo.genres)}
+              Generes:{" "}
+              {currInfo.genres.length !== 0
+                ? arrayToString(currInfo.genres)
+                : "N/A"}
             </Typography>
             <Typography variant="h6">
-              Themes: {arrayToString(currInfo.themes)}
+              Themes:{" "}
+              {currInfo.themes.length !== 0
+                ? arrayToString(currInfo.themes)
+                : "N/A"}
             </Typography>
             <Typography variant="h6">
               Demographics: {arrayToString(currInfo.demographics)}

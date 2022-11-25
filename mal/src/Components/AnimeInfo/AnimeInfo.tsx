@@ -54,90 +54,106 @@ const AnimeInfo = () => {
   }, []);
 
   return (
-    <div className="info-container">
+    <div className="manga-info-container">
       {loading && <CircularProgress />}
-
       {!loading && (
-        <div className="left-info-contianer">
-          <img src={currInfo.images.jpg.image_url} alt="Temp" />
-
-          <Typography variant="h6">Title: {currInfo.title}</Typography>
-          <Typography variant="h6">
-            Title(Jap): {currInfo.title_japanese}
-          </Typography>
-          <Typography variant="h6">Rank(Mal): {currInfo.rank}</Typography>
-          <Typography variant="h6">Rating: {currInfo.rating}</Typography>
-          <Typography variant="h6">Status: {currInfo.status}</Typography>
-          <Typography variant="h6">
-            Genre: {arrayToString(currInfo.genres)}
-          </Typography>
-
-          <Typography variant="h6">
-            Airing Duration: {currInfo.aired.string}
-          </Typography>
-        </div>
+        <Typography variant="h3">
+          {currInfo.title} {currInfo.title_japanese}
+        </Typography>
       )}
-
       {!loading && (
-        <div className="middle-info-contianer">
-          <Typography variant="h5">Summary</Typography>{" "}
-          <Typography variant="h6">{currInfo.synopsis}</Typography>
-          <Typography variant="h5">Characters</Typography>{" "}
-          <div className="middle-grid-contianer">
-            {animeCharacters.map((character: any) => {
-              return (
-                <span>
-                  <Typography variant="h6">
-                    {character.character.name}
-                  </Typography>{" "}
-                  <Typography variant="h6">{character.role}</Typography>
-                  <img
-                    src={character.character.images.jpg.image_url}
-                    alt="temo"
-                  />
-                </span>
-              );
-            })}
+        <div className="main-container">
+          <div className="left-container">
+            <img src={currInfo.images.webp.image_url} alt="No Content" />
+            <Typography variant="h6">Rank(Mal): {currInfo.rank}</Typography>
+            <Typography variant="h6">Rating: {currInfo.rating}</Typography>
+            <Typography variant="h6">Status: {currInfo.status}</Typography>
+            <Typography variant="h6">
+              Genre: {arrayToString(currInfo.genres)}
+            </Typography>
+
+            <Typography variant="h6">
+              Airing Duration: {currInfo.aired.string}
+            </Typography>
+            <Typography variant="h6">Chapters: {currInfo.chapters}</Typography>
+            <Typography variant="h6">Status: {currInfo.status}</Typography>
           </div>
-          <Typography variant="h5">Staff</Typography>{" "}
-          <div className="middle-grid-contianer">
-            {animeStaff.map((staff: any) => {
-              return (
-                <span>
-                  <Typography variant="h6">{staff.person.name}</Typography>{" "}
-                  <Typography variant="h6">
-                    Positions: {arrayToString(staff.positions)}
-                  </Typography>
-                  <img src={staff.person.images.jpg.image_url} alt="temo" />
-                </span>
-              );
-            })}
-          </div>
-          <Typography variant="h5">Episodes</Typography>{" "}
-          <div className="middle-grid-video-contianer">
-            {animeVideo.map((video: any) => {
-              return (
-                <div className="video-container">
-                  <Typography variant="h6">Title: {video.title}</Typography>{" "}
-                  <Typography variant="h6">Episode: {video.mal_id}</Typography>{" "}
-                  <Typography variant="h6">
-                    Filler: {video.filler ? "Yes" : "No"}
-                  </Typography>{" "}
-                  <Typography variant="h6">
-                    Recap: {video.recap ? "Yes" : "No"}
-                  </Typography>{" "}
-                  <a
-                    href={video.url}
-                    style={{
-                      backgroundImage: `url(${video.url});width:194px;height:129px;`,
-                    }}
-                  >
-                    {/* <img src={video.url} alt="temp"  /> */}
-                    Link
-                  </a>
-                </div>
-              );
-            })}
+          <div className="middle-container">
+            <Typography variant="h5">Characters</Typography>{" "}
+            <div className="grid-container">
+              {animeCharacters.map((character: any) => {
+                return (
+                  <div className="character-content">
+                    {/* {console.log(character.character.images.jpg.image_url)} */}
+                    <img
+                      src={character.character.images.jpg.image_url}
+                      alt="No Content"
+                    />
+                    <span>
+                      <h4>{character.character.name}</h4>
+                      <h4>{character.role}</h4>
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+            <Typography variant="h5">Staff</Typography>{" "}
+            <div className="grid-container">
+              {animeStaff.map((staff: any) => {
+                return (
+                  <div className="character-content">
+                    <img
+                      src={staff.person.images.jpg.image_url}
+                      alt="No Content"
+                    />
+                    <span>
+                      <h4>{staff.person.name}</h4>
+                      <h4>{staff.positions.map((role: any) => `${role}, `)}</h4>
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+            <Typography variant="h5">Episodes</Typography>{" "}
+            <div className="video-container">
+              {animeVideo.map((video: any) => {
+                return (
+                  <div className="video-content">
+                    <span>{video.title}</span>{" "}
+                    <span>Episode: {video.mal_id}</span>{" "}
+                    <span>Filler: {video.filler ? "Yes" : "No"}</span>{" "}
+                    <span>Recap: {video.recap ? "Yes" : "No"}</span>
+                    <a
+                      href={video.url}
+                      style={{
+                        backgroundImage: `url(${video.url});width:194px;height:129px;`,
+                      }}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {/* <img src={video.url} alt="temp"  /> */}
+                      Link
+                    </a>{" "}
+                  </div>
+                );
+              })}
+            </div>
+            {/* <Typography variant="h5">Recomendation</Typography>{" "} */}
+            {/* <div className="recomendations-container">
+              {mangaRecomendation.map((manga: any) => {
+                return (
+                  <div className="recomendations-content">
+                    <Link
+                      to={`/manga/${manga.entry.mal_id}`}
+                      onClick={() => setLoading(true)}
+                    >
+                      <img src={manga.entry.images.jpg.image_url} alt="temp" />
+                      <Typography variant="h6">{manga.entry.title}</Typography>
+                    </Link>
+                  </div>
+                );
+              })}
+            </div> */}
           </div>
         </div>
       )}
