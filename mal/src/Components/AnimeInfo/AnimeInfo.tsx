@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { CircularProgress, Typography } from "@mui/material";
 import "./AnimeInfo.scss";
 import { delay } from "../../Helpers/delay";
@@ -12,6 +12,8 @@ const AnimeInfo = () => {
   const [animeCharacters, setAnimeCharacters] = useState<any>();
   const [animeStaff, setAnimeStaff] = useState<any>();
   const [animeVideo, setAnimeVideo] = useState<any>();
+  const [animeRecomendation, setAnimeRecomendation] = useState<any>();
+
   const [loading, setLoading] = useState<boolean>(true);
 
   const getData = async () => {
@@ -46,6 +48,16 @@ const AnimeInfo = () => {
         setAnimeVideo(res.data.data);
         console.log(res.data.data, "ep");
 
+        // setLoading(false);
+      });
+
+    await delay(1000);
+
+    await axios
+      .get(`https://api.jikan.moe/v4/anime/${params.id}/recommendations`)
+      .then((res: any) => {
+        console.log(res.data.data, "rec");
+        setAnimeRecomendation(res.data.data);
         setLoading(false);
       });
   };
@@ -55,7 +67,7 @@ const AnimeInfo = () => {
 
   return (
     <div className="manga-info-container">
-      {loading && <CircularProgress />}
+      {loading && <CircularProgress className="loading" />}
       {!loading && (
         <Typography variant="h3">
           {currInfo.title} {currInfo.title_japanese}
@@ -138,22 +150,22 @@ const AnimeInfo = () => {
                 );
               })}
             </div>
-            {/* <Typography variant="h5">Recomendation</Typography>{" "} */}
-            {/* <div className="recomendations-container">
-              {mangaRecomendation.map((manga: any) => {
+            <Typography variant="h5">Recomendation</Typography>{" "}
+            <div className="recomendations-container">
+              {animeRecomendation.map((anime: any) => {
                 return (
                   <div className="recomendations-content">
                     <Link
-                      to={`/manga/${manga.entry.mal_id}`}
+                      to={`/anime/${anime.entry.mal_id}`}
                       onClick={() => setLoading(true)}
                     >
-                      <img src={manga.entry.images.jpg.image_url} alt="temp" />
-                      <Typography variant="h6">{manga.entry.title}</Typography>
+                      <img src={anime.entry.images.jpg.image_url} alt="temp" />
+                      <Typography variant="h6">{anime.entry.title}</Typography>
                     </Link>
                   </div>
                 );
               })}
-            </div> */}
+            </div>
           </div>
         </div>
       )}

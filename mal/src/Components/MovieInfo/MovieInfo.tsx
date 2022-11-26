@@ -41,7 +41,7 @@ const MovieInfo = () => {
     getData();
   }, []);
   return (
-    <div className="movie-info-container">
+    <div className="manga-info-container">
       {loading && <CircularProgress />}
       {!loading && (
         <Typography variant="h3">
@@ -49,23 +49,25 @@ const MovieInfo = () => {
         </Typography>
       )}
       {!loading && (
-        <div className="movie-main-container">
+        <div className="main-container">
           <div className="left-container">
-            <img src={currInfo.images.jpg.image_url} alt="Temp" />
-
-            <Typography variant="h6">Title: {currInfo.title}</Typography>
+            <img src={currInfo.images.webp.image_url} alt="No Content" />
+            <Typography variant="h6">Chapters: {currInfo.chapters}</Typography>
+            <Typography variant="h6">Status: {currInfo.status}</Typography>
             <Typography variant="h6">
-              Title(Jap): {currInfo.title_japanese}
+              Generes:{" "}
+              {currInfo.genres.length !== 0
+                ? arrayToString(currInfo.genres)
+                : "N/A"}
             </Typography>
-            <Typography variant="h6">Rank(Mal): {currInfo.rank}</Typography>
-            <Typography variant="h6">Rating: {currInfo.rating}</Typography>
-            <Typography variant="h6">Length: {currInfo.duration}</Typography>
             <Typography variant="h6">
-              Genre: {arrayToString(currInfo.genres)}
+              Themes:{" "}
+              {currInfo.themes.length !== 0
+                ? arrayToString(currInfo.themes)
+                : "N/A"}
             </Typography>
-
             <Typography variant="h6">
-              Airing Duration: {currInfo.aired.string}
+              Demographics: {arrayToString(currInfo.demographics)}
             </Typography>
           </div>
           <div className="middle-container">
@@ -73,7 +75,7 @@ const MovieInfo = () => {
             <div className="grid-container">
               {movieCharacters.map((character: any) => {
                 return (
-                  <div className="grid-content">
+                  <div className="character-content">
                     {/* {console.log(character.character.images.jpg.image_url)} */}
                     <img
                       src={character.character.images.jpg.image_url}
@@ -91,7 +93,7 @@ const MovieInfo = () => {
             <div className="grid-container">
               {movieStaff.map((staff: any) => {
                 return (
-                  <div className="grid-content">
+                  <div className="character-content">
                     {/* {console.log(character.character.images.jpg.image_url)} */}
                     <img src={staff.person.images.jpg.image_url} alt="temp" />
                     <span>
