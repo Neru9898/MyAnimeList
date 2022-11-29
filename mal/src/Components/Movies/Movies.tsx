@@ -56,7 +56,7 @@ function Movies() {
             size="large"
             variant="outlined"
             onChange={handlePageChange}
-            className="pagination"
+            style={{ background: "white" }}
           />
         </div>
 

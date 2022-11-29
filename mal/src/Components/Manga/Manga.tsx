@@ -8,7 +8,7 @@ const Manga = () => {
   const [mangaList, setMangaList] = useState<any>();
   const [currManga, setCurrManga] = useState<any>();
   const [currSearchManga, setCurrSearchManga] = useState<any>();
-  const [currSearch, setSearch] = useState<any>("");
+  // const [currSearch, setSearch] = useState<any>("");
   const [currPage, setCurrPage] = useState<any>({
     current: 1,
     last: 1,
@@ -32,23 +32,23 @@ const Manga = () => {
 
     await delay(1000);
   };
-  const getMangaSearch = async () => {
-    await delay(1000);
+  // const getMangaSearch = async () => {
+  //   await delay(1000);
 
-    axios
-      .get(`https://api.jikan.moe/v4/manga?q=${currSearch}`)
-      .then((res: any) => {
-        setCurrSearchManga(res.data.data);
+  //   axios
+  //     .get(`https://api.jikan.moe/v4/manga?q=${currSearch}`)
+  //     .then((res: any) => {
+  //       setCurrSearchManga(res.data.data);
 
-        setLoading(false);
-      });
-  };
+  //       setLoading(false);
+  //     });
+  // };
   useEffect(() => {
     getData();
   }, []);
-  useEffect(() => {
-    getMangaSearch();
-  }, [currSearch]);
+  // useEffect(() => {
+  //   getMangaSearch();
+  // }, [currSearch]);
 
   const handleChange = (manga: any) => {
     setCurrManga(manga);
@@ -64,7 +64,7 @@ const Manga = () => {
   return (
     <div className="anime-container">
       <div className="left-container">
-        <div className="top-control-container">
+        {/* <div className="top-control-container">
           <Typography variant="h5">Search Manga</Typography>{" "}
           <input
             className="search-input"
@@ -91,7 +91,7 @@ const Manga = () => {
               );
             })}
           </div>
-        )}
+        )} */}
 
         <div className="top-control-container">
           <Typography variant="h5">Top Manga</Typography>{" "}

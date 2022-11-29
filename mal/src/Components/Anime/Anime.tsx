@@ -9,7 +9,7 @@ const Anime = () => {
   const [animeList, setAnimeList] = useState<any>();
   const [currAnime, setCurrAnime] = useState<any>();
   const [currSeason, setCurrSeason] = useState<any>();
-  const [currSearchAnime, setCurrSearchAnime] = useState<any>();
+  // const [currSearchAnime, setCurrSearchAnime] = useState<any>();
   const [currPage, setCurrPage] = useState<any>({
     CurrentPage: 1,
     LastPage: 1,
@@ -39,27 +39,32 @@ const Anime = () => {
 
     axios.get(`https://api.jikan.moe/v4/seasons/now`).then((res: any) => {
       setCurrSeason(res.data.data);
-      // setLoading(false);
-    });
-  };
-
-  const getSearchData = async () => {
-    await delay(1000);
-
-    axios.get(`https://api.jikan.moe/v4/anime?q=${search}`).then((res: any) => {
-      console.log(res.data);
-      setCurrSearchAnime(res.data.data);
       setLoading(false);
-
-      // setLoading(false);
     });
+
+    await delay(1000);
   };
+
+  // const getSearchData = async () => {
+  //   await delay(1000);
+
+  //   axios.get(`https://api.jikan.moe/v4/anime?q=${search}`).then((res: any) => {
+  //     console.log(res.data);
+  //     setCurrSearchAnime(res.data.data);
+  //     setLoading(false);
+
+  //     // setLoading(false);
+  //   });
+
+  //   await delay(1000);
+  // };
+
   useEffect(() => {
     getData();
   }, []);
-  useEffect(() => {
-    getSearchData();
-  }, [search]);
+  // useEffect(() => {
+  //   getSearchData();
+  // }, [search]);
 
   const handleChange = (anime: any) => {
     setCurrAnime(anime);
@@ -84,7 +89,7 @@ const Anime = () => {
   return (
     <div className="anime-container">
       <div className="left-container">
-        <div className="top-control-container">
+        {/*  <div className="top-control-container">
           <Typography variant="h5">Search Anime</Typography>
           <input
             className="search-input"
@@ -110,7 +115,7 @@ const Anime = () => {
               );
             })
           )}
-        </div>
+        </div> */}
 
         <div className="top-control-container">
           <Typography variant="h5">Top Anime</Typography>
