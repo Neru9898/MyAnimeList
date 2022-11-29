@@ -22,6 +22,8 @@ const Home = () => {
     "Saturday",
   ];
   const getData = async () => {
+    await delay(1000);
+
     axios
       .get(
         `https://api.jikan.moe/v4/schedules?sfw=true&filter=${weekdays[currentDay]}`

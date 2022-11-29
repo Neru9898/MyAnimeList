@@ -2,6 +2,7 @@ import { CircularProgress, Pagination, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { delay } from "../../Helpers/delay";
 function Movies() {
   const [movieList, setMovieList] = useState<any>();
   const [currMovie, setCurrMovie] = useState<any>();
@@ -10,8 +11,9 @@ function Movies() {
     last: 1,
   });
   const [loading, setLoading] = useState<boolean>(true);
+  const getData = async () => {
+    await delay(1000);
 
-  useEffect(() => {
     axios
       .get(
         `https://api.jikan.moe/v4/top/anime?type=movie&page=${currPage.current}`
@@ -26,6 +28,10 @@ function Movies() {
         setCurrMovie(res.data.data[0]);
         setLoading(false);
       });
+    await delay(1000);
+  };
+  useEffect(() => {
+    getData();
   }, [currPage]);
 
   const handleChange = (anime: any) => {

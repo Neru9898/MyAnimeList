@@ -13,6 +13,8 @@ const MovieInfo = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const getData = async () => {
+    await delay(1000);
+
     await axios
       .get(`https://api.jikan.moe/v4/anime/${params.id}/full`)
       .then((res: any) => {

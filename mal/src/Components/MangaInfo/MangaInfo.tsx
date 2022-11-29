@@ -16,6 +16,8 @@ const MangaInfo = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const getData = async () => {
+    await delay(1000);
+
     await axios
       .get(`https://api.jikan.moe/v4/manga/${params.id}/full`)
       .then((res: any) => {

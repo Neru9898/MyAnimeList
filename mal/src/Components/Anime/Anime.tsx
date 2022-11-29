@@ -18,6 +18,8 @@ const Anime = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const getData = async () => {
+    await delay(1000);
+
     axios
       .get(
         `https://api.jikan.moe/v4/top/anime?type=tv&page=${currPage.CurrentPage}`
