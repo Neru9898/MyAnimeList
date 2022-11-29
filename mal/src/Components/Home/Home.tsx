@@ -55,7 +55,11 @@ const Home = () => {
 
   return (
     <>
-      <Typography variant="h5">Welcome to MAL</Typography>
+      <Typography variant="h5">
+        Welcome to MAL Mock(v1) This is a software project to improve css and
+        typescrtiy with react just for desktop use. I have a to do list to
+        improve and clean, this is just to host and have a basic layout.{" "}
+      </Typography>
 
       <div className="home-container">
         <div className="schedule-contatiner">

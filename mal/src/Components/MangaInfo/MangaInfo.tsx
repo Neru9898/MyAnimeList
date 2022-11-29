@@ -63,7 +63,7 @@ const MangaInfo = () => {
   }, [params.id]);
   return (
     <div className="manga-info-container">
-      {loading && <CircularProgress />}
+      {loading && <CircularProgress className="loading" />}
       {!loading && (
         <Typography variant="h3">
           {currInfo.title} {currInfo.title_japanese}
